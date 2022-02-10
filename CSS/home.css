@@ -32,6 +32,7 @@ h1 {
   color: #75c9c8;
   font-size: 120px;
   margin-bottom: 50px;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 h1 span {
   color: #ff3a5d;
@@ -66,12 +67,12 @@ a {
   display: inline-block;
   text-decoration: none;
   color: #fff;
-  background-color: green;
   width: 147.3px;
   height: 43px;
   font-size: 23px;
   line-height: 43px;
   border-radius: 5px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 #sign-in-button {
   background-color: #ff3a5d;
