@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #202020;
+  font-family: Rockwell, sans-serif;
+}
+
+/*
+============
+MAIN CONTAINER
+============
+*/
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/*
+============
+TITLE
+============
+*/
+
+h1 {
+  color: #75c9c8;
+  font-size: 120px;
+  margin-bottom: 50px;
+}
+h1 span {
+  color: #ff3a5d;
+}
+
+/*
+============
+DESCRIPTION
+============
+*/
+
+.description {
+  color: #7f7f7f;
+  margin-bottom: 70px;
+}
+h2 {
+  font-weight: normal;
+  font-size: 60px;
+}
+p {
+  color: #7f7f7f;
+  font-size: 30px;
+}
+
+/*
+============
+BUTTONS
+============
+*/
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background-color: green;
+  width: 147.3px;
+  height: 43px;
+  font-size: 23px;
+  line-height: 43px;
+  border-radius: 5px;
+}
+#sign-in-button {
+  background-color: #ff3a5d;
+  margin-right: 20px;
+}
+#sign-up-button {
+  background-color: #75c9c8;
+  margin-left: 20px;
+}
