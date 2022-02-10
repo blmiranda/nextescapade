@@ -104,7 +104,8 @@ BUTTON
   margin-bottom: 30px;
   font-family: Rockwell, sans-serif;
   font-size: 23px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 0px #b62943, 2px 2px 0px #b62943, 3px 3px 0px #b62943,
+    4px 4px 0px #b62943, 15px 15px 10px rgba(0, 0, 0, 0.7);
   cursor: pointer;
 }
 
