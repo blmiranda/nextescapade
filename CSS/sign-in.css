@@ -34,10 +34,22 @@ TITLE
 h1 {
   color: #75c9c8;
   font-size: 100px;
+<<<<<<< Updated upstream
   text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 h1 span {
   color: #ff3a5d;
+=======
+  text-shadow: 1px 1px 0px #589796, 2px 2px 0px #589796, 3px 3px 0px #589796,
+    4px 4px 0px #589796, 5px 5px 0px #589796, 6px 6px 0px #589796,
+    7px 7px 0px #589796, 20px 20px 10px rgba(0, 0, 0, 0.7);
+}
+h1 span {
+  color: #ff3a5d;
+  text-shadow: 1px 1px 0px #b62943, 2px 2px 0px #b62943, 3px 3px 0px #b62943,
+    4px 4px 0px #b62943, 5px 5px 0px #b62943, 6px 6px 0px #b62943,
+    7px 7px 0px #b62943, 20px 20px 10px rgba(0, 0, 0, 0.7);
+>>>>>>> Stashed changes
 }
 
 /*
