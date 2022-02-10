@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>WishingTo</title>
+        <title>WishingTo - Sign In</title>
 
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="./CSS/home.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/sign-in.css">
     </head>
 
     <body>
         <main>
             <h1>Wishing<span>To</span></h1>
 
-            <div class="description">
-                <h2>Welcome!</h2>
-                <p>All your wishing lists in a simple way.</p>
-            </div>
+            <div class="account">
+                <form method="get" action="../pages/user-list.html">
+                    <div class="container-email">
+                        <input type="email" name="email" placeholder="Email" id="email">
+                    </div>
 
-            <div class="buttons">
-                <a href="./pages/sign-in.html" id="sign-in-button">sign in</a>
-                <a href="#" id="sign-up-button">sign up</a>
+                    <div class="container-password">
+                        <input type="password" name="password" placeholder="Password" id="password">
+                    </div>
+
+                    <input type="button" name="sign-in" value="sign-in" onclick="signIn()" id="sign-in-button">
+                </form>
+
+                <p>Don't have an account? <a href="#">Sign up</a></p>
             </div>
         </main>
         
