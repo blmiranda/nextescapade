@@ -13,3 +13,37 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 
 // APP
+
+function signUp(newUserEmail, newUserPassword) {
+  auth
+    .createUserWithEmailAndPassword(newUserEmail, newUserPassword)
+    .then((user) => {
+      if (user) {
+        location.replace("../pages/account-created.html");
+      }
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+function signIn(userEmail, userPassword) {
+  auth
+    .signInWithEmailAndPassword(userEmail, userPassword)
+    .then((user) => {
+      if (user) {
+        location.replace("../pages/my-wishlist.html");
+      }
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
+function fetchUserData() {
+  auth.onAuthStateChanged((user) => {
+    document.getElementsByTagName(
+      "main"
+    )[0].innerHTML = `My wishlist ${user.email}`;
+  });
+}

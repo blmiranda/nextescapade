@@ -15,18 +15,16 @@
             <a href="../index.html"><h1>Wishing<span>To</span></h1></a>
 
             <div class="account">
-                <form method="get" action="../pages/user-list.html">
-                    <div class="container-email">
-                        <input type="email" name="email" placeholder="Email" id="email">
-                    </div>
+                <div class="container-email">
+                    <input type="email" name="email" placeholder="Email" id="email">
+                </div>
 
-                    <div class="container-password">
-                        <input type="password" name="password" placeholder="Password" id="password">
-                    </div>
+                <div class="container-password">
+                    <input type="password" name="password" placeholder="Password" id="password">
+                </div>
 
-                    <input type="button" name="sign-in" value="sign-in" onclick="signIn()" id="sign-in-button">
-                </form>
-
+                <input type="button" name="sign-in" value="sign-in" onclick="logUser()" id="sign-in-button">
+                
                 <p>Don't have an account? <a href="./sign-up.html">Sign up</a></p>
             </div>
         </main>
@@ -36,5 +34,6 @@
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
         <script src="../scripts/app.js"></script>
+        <script src="../scripts/sign-in.js"></script>
     </body>
 </html>
