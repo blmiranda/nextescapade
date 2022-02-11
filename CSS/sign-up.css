@@ -81,7 +81,7 @@ input {
   content: "";
   width: 100%;
   height: 5px;
-  background-color: #75c9c8;
+  background-color: #ff3a5d;
   border-radius: 50px;
   box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
   position: absolute;
@@ -94,8 +94,8 @@ BUTTON
 ============
 */
 
-#sign-in-button {
-  background-color: #ff3a5d;
+#sign-up-button {
+  background-color: #75c9c8;
   color: #fff;
   width: 147.3px;
   height: 43px;
@@ -104,8 +104,8 @@ BUTTON
   margin-bottom: 30px;
   font-family: Rockwell, sans-serif;
   font-size: 23px;
-  box-shadow: 1px 1px 0px #b62943, 2px 2px 0px #b62943, 3px 3px 0px #b62943,
-    4px 4px 0px #b62943, 15px 15px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 1px 1px 0px #589796, 2px 2px 0px #589796, 3px 3px 0px #589796,
+    4px 4px 0px #589796, 15px 15px 10px rgba(0, 0, 0, 0.7);
   cursor: pointer;
 }
 
@@ -120,14 +120,14 @@ p {
 }
 p a {
   text-decoration: none;
-  color: #75c9c8;
+  color: #ff3a5d;
   position: relative;
 }
 p a::before {
   content: "";
   width: 0%;
   height: 3px;
-  background-color: #75c9c8;
+  background-color: #ff3a5d;
   border-radius: 50px;
   position: absolute;
   top: 100%;
