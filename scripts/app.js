@@ -14,6 +14,7 @@ const auth = firebase.auth();
 
 // APP
 
+// REGISTRATION
 function signUp(newUserEmail, newUserPassword) {
   auth
     .createUserWithEmailAndPassword(newUserEmail, newUserPassword)
@@ -27,23 +28,39 @@ function signUp(newUserEmail, newUserPassword) {
     });
 }
 
+// LOGIN
 function signIn(userEmail, userPassword) {
+  auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
+    auth
+      .signInWithEmailAndPassword(userEmail, userPassword)
+      .then((user) => {
+        if (user) {
+          location.replace("../pages/my-wishlist.html");
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  });
+}
+
+// LOGOUT
+function signOut() {
   auth
-    .signInWithEmailAndPassword(userEmail, userPassword)
-    .then((user) => {
-      if (user) {
-        location.replace("../pages/my-wishlist.html");
-      }
+    .signOut()
+    .then(() => {
+      location.replace("../index.html");
     })
     .catch((error) => {
-      alert(error);
+      console.log(error);
     });
 }
 
+// GET USER DATA
 function fetchUserData() {
   auth.onAuthStateChanged((user) => {
     document.getElementsByTagName(
-      "main"
+      "h1"
     )[0].innerHTML = `My wishlist ${user.email}`;
   });
 }
