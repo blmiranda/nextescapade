@@ -12,7 +12,11 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
-// APP
+/*
+========================
+AUTHENTIFICATION
+========================
+*/
 
 // VERIFY CURRENT USER EXISTENCE
 function verifyCurrentUser() {
@@ -64,6 +68,12 @@ function signOut() {
       console.log(error);
     });
 }
+
+/*
+========================
+DATABASE
+========================
+*/
 
 // GET USER DATA
 function fetchUserData() {
