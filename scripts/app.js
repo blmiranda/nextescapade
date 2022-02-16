@@ -14,6 +14,15 @@ const auth = firebase.auth();
 
 // APP
 
+// VERIFY CURRENT USER EXISTENCE
+function verifyCurrentUser() {
+  auth.onAuthStateChanged(() => {
+    if (auth.currentUser != null) {
+      location.replace("../pages/my-wishlist.html");
+    }
+  });
+}
+
 // REGISTRATION
 function signUp(newUserEmail, newUserPassword) {
   auth
