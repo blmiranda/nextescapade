@@ -31,10 +31,13 @@ function verifyCurrentUser() {
 function signUp(newUserEmail, newUserPassword) {
   auth
     .createUserWithEmailAndPassword(newUserEmail, newUserPassword)
-    .then((user) => {
-      if (user) {
-        location.replace("../pages/account-created.html");
-      }
+    .then((createdUser) => {
+      db.collection("users")
+        .doc(createdUser.user.uid)
+        .set({})
+        .then(() => {
+          location.replace("../pages/my-wishlist.html");
+        });
     })
     .catch((error) => {
       alert(error);
@@ -43,7 +46,7 @@ function signUp(newUserEmail, newUserPassword) {
 
 // LOGIN
 function signIn(userEmail, userPassword) {
-  auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
     auth
       .signInWithEmailAndPassword(userEmail, userPassword)
       .then((user) => {
@@ -78,8 +81,13 @@ DATABASE
 // GET USER DATA
 function fetchUserData() {
   auth.onAuthStateChanged((user) => {
-    document.getElementsByTagName(
-      "h1"
-    )[0].innerHTML = `My wishlist ${user.email}`;
+    userAuth = user;
+
+    db.collection("users")
+      .doc(user.uid)
+      .get()
+      .then((snapshot) => {
+        userData = snapshot.data();
+      });
   });
 }
