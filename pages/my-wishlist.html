@@ -8,12 +8,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" type="text/css" href="../CSS/my-wishlist.css">
+        <script src="https://kit.fontawesome.com/6e389afd81.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
+        <header>
+            <h1>Wishing<span>To</span></h1>
+
+            <div class="user-information">
+                <span id="username"></span>
+                <i class="fa-solid fa-user-astronaut fa-2xl" onclick="showMenu()"></i>
+            </div>
+        </header>
+
         <main>
-            
+            <div class="empty-list">
+                <h2>Create a category!</h2>
+            </div>
         </main>
+
+        <footer onclick="showCreateWindow()">
+            <i class="fa-solid fa-plus fa-lg"></i>
+        </footer>
+
+        <div class="logout-popup">
+            <div class="logout-menu">
+                <i class="fa-solid fa-plus fa-lg" onclick="closeMenu()"></i>
+                <button id="logout-button" onclick="logOut()">Log Out</button>
+            </div>
+        </div>
+
+        <div class="create-popup">
+            <div class="create-menu">
+
+
+
+                <div class="create-menu-buttons">
+                    <button id="cancel-button" onclick="cancelCreation()">Cancel</button>
+                    <button id="create-button" onclick="createCategory()">Create</button>
+                </div>
+            </div>
+        </div>
 
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>

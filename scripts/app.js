@@ -81,13 +81,17 @@ DATABASE
 // GET USER DATA
 function fetchUserData() {
   auth.onAuthStateChanged((user) => {
-    userAuth = user;
+    let data = {};
+
+    data.userAuth = user;
 
     db.collection("users")
       .doc(user.uid)
       .get()
       .then((snapshot) => {
-        userData = snapshot.data();
+        data.userData = snapshot.data();
       });
+
+    integrateData(data);
   });
 }
