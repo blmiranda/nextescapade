@@ -34,6 +34,8 @@ function signUp(newUserEmail, newUserPassword) {
     .then((createdUser) => {
       db.collection("users")
         .doc(createdUser.user.uid)
+        .collection("wishlists")
+        .doc("ignore")
         .set({})
         .then(() => {
           location.replace("../pages/my-wishlist.html");
@@ -87,11 +89,50 @@ function fetchUserData() {
 
     db.collection("users")
       .doc(user.uid)
-      .get()
-      .then((snapshot) => {
-        data.userData = snapshot.data();
+      .collection("wishlists")
+      .doc("ignore") // useless document to delete
+      .delete()
+      .then(() => {
+        db.collection("users")
+          .doc(user.uid)
+          .collection("wishlists")
+          .get()
+          .then((snapshot) => {
+            data.userData = snapshot.docs;
+            integrateData(data);
+          });
       });
-
-    integrateData(data);
   });
+}
+
+//  CREATE NEW CATEGORY
+function newCategory(categoryName, categoryDescription) {
+  db.collection("users")
+    .doc(auth.currentUser.uid)
+    .collection("wishlists")
+    .doc(categoryName)
+    .set({
+      description: categoryDescription,
+    })
+    .then(() => {
+      location.reload();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+//  DELETE CATEGORY
+function deleteExistingCategory(selectedCategory) {
+  db.collection("users")
+    .doc(auth.currentUser.uid)
+    .collection("wishlists")
+    .doc(selectedCategory)
+    .delete()
+    .then(() => {
+      location.reload();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
