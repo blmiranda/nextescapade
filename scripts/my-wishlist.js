@@ -94,7 +94,11 @@ function createCategory() {
   let categoryName = document.getElementById("category-name");
   let categoryDescription = document.getElementById("category-description");
 
-  newCategory(categoryName.value, categoryDescription.value);
+  if (categoryName.value && categoryDescription.value != "") {
+    newCategory(categoryName.value, categoryDescription.value);
+  } else {
+    alert("Oups! There seems to be some empty fields!");
+  }
 }
 
 /*
