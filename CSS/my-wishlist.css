@@ -309,6 +309,23 @@ POPUP CREATE MENU
   height: 250px;
   margin-top: 30px;
   position: relative;
+  overflow: hidden;
+}
+#image-input {
+  color: transparent;
+  outline: none;
+}
+#image-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+#image-input::before {
+  content: "";
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   cursor: pointer;
 }
 .fa-image {

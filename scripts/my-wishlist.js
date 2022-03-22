@@ -79,6 +79,8 @@ POPUP CREATE WINDOW
 
 let createPopup = document.getElementsByClassName("create-popup")[0];
 let createMenu = document.getElementsByClassName("create-menu")[0];
+let imgBox = document.getElementsByClassName("upload-photo")[0];
+let imageInput = document.getElementById("image-input");
 
 function openCreateWindow() {
   createPopup.classList.add("active");
@@ -88,7 +90,30 @@ function openCreateWindow() {
 function closeCreateWindow() {
   createPopup.classList.remove("active");
   createMenu.classList.remove("active");
+
+  imgBox.children[0].style.display = "block";
+  imgBox.children[1].style.display = "block";
+  imageInput.value = null;
+
+  if (imgBox.children.length === 3) {
+    imgBox.lastElementChild.remove();
+  }
 }
+
+imageInput.addEventListener("change", (e) => {
+  let img = document.createElement("img");
+  img.src = URL.createObjectURL(e.target.files[0]);
+  img.style.position = "absolute";
+  img.style.top = "50%";
+  img.style.left = "50%";
+  img.style.transform = "translate(-50%, -50%)";
+  img.style.maxWidth = "100%";
+  img.style.maxHeight = "100%";
+
+  imgBox.children[0].style.display = "none";
+  imgBox.children[1].style.display = "none";
+  imgBox.appendChild(img);
+});
 
 function createCategory() {
   let categoryName = document.getElementById("category-name");

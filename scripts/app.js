@@ -11,6 +11,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
+const storage = firebase.storage();
+const bucketRef = storage.ref();
 
 /*
 ========================
@@ -136,3 +138,9 @@ function deleteExistingCategory(selectedCategory) {
       console.log(error);
     });
 }
+
+/*
+========================
+STORAGE
+========================
+*/
