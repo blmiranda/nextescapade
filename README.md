@@ -1,2 +1,3 @@
-# WishingTo
- A web app designed to help keep track of the products we want to buy in the future
+# NextEscapade
+
+A web app designed to help keep track of the trips we want to do in the future
