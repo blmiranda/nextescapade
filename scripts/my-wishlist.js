@@ -27,7 +27,9 @@ function integrateData(data) {
 
     data.userData.forEach((item) => {
       let codeBlock = `<div class="item">
-          <div class="photo"></div>
+          <div class="photo">
+            <img src="${item.data().imgURL}" alt="image" id="item-photo">
+          </div>
 
           <div class="details">
               <h2 class="title">${item.id}</h2>
@@ -119,10 +121,22 @@ function createCategory() {
   let categoryName = document.getElementById("category-name");
   let categoryDescription = document.getElementById("category-description");
 
-  if (categoryName.value && categoryDescription.value != "") {
-    newCategory(categoryName.value, categoryDescription.value);
+  if (
+    categoryName.value &&
+    categoryDescription.value &&
+    imageInput.value != ""
+  ) {
+    createPopup.classList.remove("active");
+    createMenu.classList.remove("active");
+    newCategory(
+      categoryName.value,
+      categoryDescription.value,
+      imageInput.files[0]
+    );
   } else {
-    alert("Oups! There seems to be some empty fields!");
+    alert(
+      "Oups! There seems to be some empty fields! Don't forget to add a photo also!"
+    );
   }
 }
 

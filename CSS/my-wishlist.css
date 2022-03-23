@@ -114,8 +114,18 @@ MAIN SECTION
 
 /* ITEM PHOTO */
 .photo {
+  background-color: #171717;
   width: 26%;
   height: 100%;
+  position: relative;
+}
+#item-photo {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ITEM DETAILS */

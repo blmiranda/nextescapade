@@ -108,19 +108,31 @@ function fetchUserData() {
 }
 
 //  CREATE NEW CATEGORY
-function newCategory(categoryName, categoryDescription) {
-  db.collection("users")
-    .doc(auth.currentUser.uid)
-    .collection("wishlists")
-    .doc(categoryName)
-    .set({
-      description: categoryDescription,
-    })
-    .then(() => {
-      location.reload();
-    })
-    .catch((error) => {
-      console.log(error);
+function newCategory(categoryName, categoryDescription, categoryIMG) {
+  bucketRef
+    .child(`/Images/${auth.currentUser.uid}/${categoryName}`)
+    .child(categoryIMG.name)
+    .put(categoryIMG)
+    .then((snapshot) => {
+      bucketRef
+        .child(snapshot.ref.fullPath)
+        .getDownloadURL()
+        .then((URL) => {
+          db.collection("users")
+            .doc(auth.currentUser.uid)
+            .collection("wishlists")
+            .doc(categoryName)
+            .set({
+              imgURL: URL,
+              description: categoryDescription,
+            })
+            .then(() => {
+              location.reload();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        });
     });
 }
 
@@ -132,7 +144,21 @@ function deleteExistingCategory(selectedCategory) {
     .doc(selectedCategory)
     .delete()
     .then(() => {
-      location.reload();
+      bucketRef
+        .child(`/Images/${auth.currentUser.uid}/${selectedCategory}`)
+        .listAll()
+        .then((res) => {
+          res.items.forEach((item) => {
+            bucketRef
+              .child(
+                `/Images/${auth.currentUser.uid}/${selectedCategory}/${item.name}`
+              )
+              .delete()
+              .then(() => {
+                location.reload();
+              });
+          });
+        });
     })
     .catch((error) => {
       console.log(error);
