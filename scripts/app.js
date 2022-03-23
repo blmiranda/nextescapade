@@ -91,13 +91,13 @@ function fetchUserData() {
 
     db.collection("users")
       .doc(user.uid)
-      .collection("wishlists")
+      .collection("destinations")
       .doc("ignore") // useless document to delete
       .delete()
       .then(() => {
         db.collection("users")
           .doc(user.uid)
-          .collection("wishlists")
+          .collection("destinations")
           .get()
           .then((snapshot) => {
             data.userData = snapshot.docs;
@@ -120,7 +120,7 @@ function newCategory(categoryName, categoryDescription, categoryIMG) {
         .then((URL) => {
           db.collection("users")
             .doc(auth.currentUser.uid)
-            .collection("wishlists")
+            .collection("destinations")
             .doc(categoryName)
             .set({
               imgURL: URL,
@@ -140,7 +140,7 @@ function newCategory(categoryName, categoryDescription, categoryIMG) {
 function deleteExistingCategory(selectedCategory) {
   db.collection("users")
     .doc(auth.currentUser.uid)
-    .collection("wishlists")
+    .collection("destinations")
     .doc(selectedCategory)
     .delete()
     .then(() => {
