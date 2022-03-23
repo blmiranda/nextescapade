@@ -1,12 +1,12 @@
 // INITIALIZING FIREBASE
 const firebaseConfig = {
-  apiKey: "AIzaSyD61MQ18ibGkA_wsxB_KG2Lc5Jpp0qZY3Q",
-  authDomain: "wishingto.firebaseapp.com",
-  projectId: "wishingto",
-  storageBucket: "wishingto.appspot.com",
-  messagingSenderId: "994257848607",
-  appId: "1:994257848607:web:52501d863d9c934465c82a",
-  measurementId: "G-K8KJ559BXZ",
+  apiKey: "AIzaSyC66WdaLKnrp5dZmKEaLZoAAkpW4SaVFxM",
+  authDomain: "nextescapade-ab9d4.firebaseapp.com",
+  projectId: "nextescapade-ab9d4",
+  storageBucket: "nextescapade-ab9d4.appspot.com",
+  messagingSenderId: "95167174641",
+  appId: "1:95167174641:web:9ad6fb0b882772ee115650",
+  measurementId: "G-06P14KEP7M",
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
@@ -24,7 +24,7 @@ AUTHENTIFICATION
 function verifyCurrentUser() {
   auth.onAuthStateChanged(() => {
     if (auth.currentUser != null) {
-      location.replace("../pages/my-wishlist.html");
+      location.replace("../pages/my-destinations.html");
     }
   });
 }
@@ -40,7 +40,7 @@ function signUp(newUserEmail, newUserPassword) {
         .doc("ignore")
         .set({})
         .then(() => {
-          location.replace("../pages/my-wishlist.html");
+          location.replace("../pages/my-destinations.html");
         });
     })
     .catch((error) => {
@@ -55,7 +55,7 @@ function signIn(userEmail, userPassword) {
       .signInWithEmailAndPassword(userEmail, userPassword)
       .then((user) => {
         if (user) {
-          location.replace("../pages/my-wishlist.html");
+          location.replace("../pages/my-destinations.html");
         }
       })
       .catch((error) => {
