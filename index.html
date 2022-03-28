@@ -12,16 +12,17 @@
 
     <body onload="verifyCurrentUser()">
         <main>
-            <h1>Wishing<span>To</span></h1>
+            <video id="videoBG" cover="./assets/sea-cover.png" autoplay muted loop>
+                <source src="./assets/sea.mp4" type="video/mp4">
+            </video>
+            
+            <div class="content">
+                <h1>NextExcapade</h1>
 
-            <div class="description">
-                <h2>Welcome!</h2>
-                <p>All your wishing lists in a simple way.</p>
-            </div>
-
-            <div class="buttons">
-                <a href="./pages/sign-in.html" id="sign-in-button">sign in</a>
-                <a href="./pages/sign-up.html" id="sign-up-button">sign up</a>
+                <div class="buttons">
+                    <a href="./pages/sign-in.html" id="sign-in-button">sign in</a>
+                    <a href="./pages/sign-up.html" id="sign-up-button">sign up</a>
+                </div>
             </div>
         </main>
 

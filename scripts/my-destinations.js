@@ -27,20 +27,17 @@ function integrateData(data) {
 
     data.userData.forEach((item) => {
       let codeBlock = `<div class="item">
-          <div class="photo">
-            <img src="${item.data().imgURL}" alt="image" id="item-photo">
-          </div>
+      <div class="photo" style="background-image: url(${item.data().imgURL});
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;"></div>
 
-          <div class="details">
-              <h2 class="title">${item.id}</h2>
-              <hr>
-              <p class="description">${item.data().description}</p>
-          </div>
+      <div class="details">
+          <h2 class="title">${item.id}</h2>
+      </div>
 
-          <div class="trash">
-              <i class="fa-regular fa-trash-can fa-xl" onclick="openDeleteConfirmation(this)"></i>
-          </div>
-      </div>`;
+      <i class="fa-regular fa-trash-can fa-xl" onclick="openDeleteConfirmation(this)"></i>
+  </div>`;
 
       itemsList.innerHTML += codeBlock;
     });
@@ -121,18 +118,11 @@ function createCategory() {
   let categoryName = document.getElementById("category-name");
   let categoryDescription = document.getElementById("category-description");
 
-  if (
-    categoryName.value &&
-    categoryDescription.value &&
-    imageInput.value != ""
-  ) {
+  if (categoryName.value && imageInput.value != "") {
     createPopup.classList.remove("active");
     createMenu.classList.remove("active");
-    newCategory(
-      categoryName.value,
-      categoryDescription.value,
-      imageInput.files[0]
-    );
+
+    newCategory(categoryName.value, imageInput.files[0]);
   } else {
     alert(
       "Oups! There seems to be some empty fields! Don't forget to add a photo also!"
@@ -154,8 +144,7 @@ function openDeleteConfirmation(element) {
   deletePopup.classList.add("active");
   deleteMenu.classList.add("active");
 
-  selectedCategory =
-    element.parentNode.parentNode.childNodes[3].firstElementChild.innerText;
+  selectedCategory = element.parentNode.children[1].firstElementChild.innerText;
 }
 
 function closeDeleteConfirmation() {

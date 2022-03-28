@@ -108,7 +108,7 @@ function fetchUserData() {
 }
 
 //  CREATE NEW CATEGORY
-function newCategory(categoryName, categoryDescription, categoryIMG) {
+function newCategory(categoryName, categoryIMG) {
   bucketRef
     .child(`/Images/${auth.currentUser.uid}/${categoryName}`)
     .child(categoryIMG.name)
@@ -124,7 +124,6 @@ function newCategory(categoryName, categoryDescription, categoryIMG) {
             .doc(categoryName)
             .set({
               imgURL: URL,
-              description: categoryDescription,
             })
             .then(() => {
               location.reload();

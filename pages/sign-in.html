@@ -12,20 +12,25 @@
 
     <body>
         <main>
-            <a href="../index.html"><h1>Wishing<span>To</span></h1></a>
+            <div class="title">
+                <a href="../index.html"><h1>NextEscapade</h1></a>
+                <div id="diviser"></div> 
+            </div>
 
-            <div class="account">
-                <div class="container-email">
-                    <input type="email" name="email" placeholder="Email" id="email">
+            <div class="form">
+                <div class="account">
+                    <div class="container-email">
+                        <input type="email" name="email" placeholder="Email" id="email">
+                    </div>
+
+                    <div class="container-password">
+                        <input type="password" name="password" placeholder="Password" id="password">
+                    </div>
+
+                    <input type="button" name="sign-in" value="sign-in" onclick="logUser()" id="sign-in-button">
+                    
+                    <p>Don't have an account? <a href="./sign-up.html">Sign up</a></p>
                 </div>
-
-                <div class="container-password">
-                    <input type="password" name="password" placeholder="Password" id="password">
-                </div>
-
-                <input type="button" name="sign-in" value="sign-in" onclick="logUser()" id="sign-in-button">
-                
-                <p>Don't have an account? <a href="./sign-up.html">Sign up</a></p>
             </div>
         </main>
         
