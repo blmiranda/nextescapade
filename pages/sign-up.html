@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>WishingTo - Sign Up</title>
+        <title>NextEscapade - Sign Up</title>
 
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +12,25 @@
 
     <body>
         <main>
-            <a href="../index.html"><h1>Wishing<span>To</span></h1></a>
+            <div class="title">
+                <a href="../index.html"><h1>NextEscapade</h1></a>
+                <div id="diviser"></div>
+            </div>
 
-            <div class="account">
-                <div class="container-email">
-                    <input type="email" name="email" placeholder="Create Email" id="email">
+            <div class="form">
+                <div class="account">
+                    <div class="container-email">
+                        <input type="email" name="email" placeholder="Create Email" id="email">
+                    </div>
+
+                    <div class="container-password">
+                        <input type="password" name="password" placeholder="Create Password" id="password">
+                    </div>
+
+                    <input type="button" name="sign-up" value="sign-up" onclick="createUser()" id="sign-up-button">
+
+                    <p>Already have an account? <a href="./sign-in.html">Sign in</a></p>
                 </div>
-
-                <div class="container-password">
-                    <input type="password" name="password" placeholder="Create Password" id="password">
-                </div>
-
-                <input type="button" name="sign-up" value="sign-up" onclick="createUser()" id="sign-up-button">
-
-                <p>Already have an account? <a href="./sign-in.html">Sign in</a></p>
             </div>
         </main>
         

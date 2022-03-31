@@ -1,0 +1,488 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body,
+html {
+  background-color: #0b0e12;
+  font-family: Rockwell, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/*
+========================
+HEADER SECTION
+========================
+*/
+
+header {
+  height: 70px;
+  margin: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+h1 {
+  color: #fff;
+  font-size: 26px;
+  position: relative;
+}
+h1::before {
+  content: "";
+  background-color: #101e34;
+  width: 5.6px;
+  height: 54.8px;
+  position: absolute;
+  top: 50%;
+  left: -8%;
+  transform: translateY(-50%);
+}
+
+.fa-user-astronaut {
+  color: #7f7f7f;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.fa-user-astronaut:hover {
+  color: #fff;
+}
+
+/*
+========================
+MAIN SECTION
+========================
+*/
+
+/********** EMPTY LIST **********/
+.empty-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: default;
+  display: none;
+}
+.empty-list.active {
+  display: block;
+}
+.empty-list h2 {
+  color: #2e2e2e;
+  font-size: 35px;
+  font-weight: normal;
+  text-align: center;
+}
+
+/********** ITEMS LIST **********/
+.items-list {
+  padding-top: 50px;
+  display: none;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.items-list.active {
+  display: flex;
+}
+
+.item {
+  width: 340px;
+  height: 450px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ITEM PHOTO */
+.photo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#item-photo {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ITEM DETAILS */
+.details {
+  background-color: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: 0.5s;
+}
+.item:hover .details {
+  height: 15%;
+  top: 88%;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* CLOSE WINDOW */
+.fa-trash-can {
+  color: #ff3a5d;
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+/*
+========================
+FOOTER SECTION
+========================
+*/
+
+footer {
+  background-color: #101e34;
+  width: 48.5px;
+  height: 48.5px;
+  border-radius: 50%;
+  box-shadow: 9.6px 9.6px 26px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+footer .fa-plus {
+  color: #fff;
+  transition: 0.5s;
+}
+footer:hover .fa-plus {
+  transform: rotate(180deg);
+}
+
+/*
+========================
+POPUP LOGOUT MENU
+========================
+*/
+
+.logout-popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  visibility: hidden;
+}
+.logout-popup.active {
+  visibility: visible;
+}
+
+.logout-menu {
+  background-color: #0b0e12;
+  width: 350px;
+  height: 150px;
+  border-radius: 10px;
+  padding-top: 40px;
+  box-sizing: border-box;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.5s;
+}
+.logout-menu.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#username {
+  color: #fff;
+}
+
+#logout-button {
+  background-color: #101e34;
+  color: #fff;
+  width: 80%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-family: Rockwell, sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.logout-menu .fa-plus {
+  color: #fff;
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+/*
+========================
+POPUP CREATE MENU
+========================
+*/
+
+.create-popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  visibility: hidden;
+}
+.create-popup.active {
+  visibility: visible;
+}
+
+.create-menu {
+  background-color: #0b0e12;
+  color: #fff;
+  width: 500px;
+  height: 500px;
+  text-align: center;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.5s;
+}
+.create-menu.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.create-menu h2 {
+  font-size: 37px;
+  font-weight: normal;
+  margin-top: 30px;
+}
+.create-menu hr {
+  background-color: #101e34;
+  display: inline-block;
+  width: 90%;
+  height: 3px;
+  border: none;
+  border-radius: 10px;
+}
+
+/****PHOTO INPUT****/
+.upload-photo {
+  background-color: #0b0e12;
+  width: 100%;
+  height: 250px;
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+#image-input {
+  color: transparent;
+  outline: none;
+}
+#image-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+#image-input::before {
+  content: "";
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+.fa-image {
+  color: #7f7f7f;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/****NAME INPUT****/
+.create-menu input {
+  display: inline-block;
+}
+#category-name {
+  background-color: transparent;
+  color: #7f7f7f;
+  width: 90%;
+  height: 41px;
+  font-size: 20px;
+  font-family: Rockwell, sans-serif;
+  outline: none;
+  border: none;
+  border-left: 3px solid #101e34;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+/****DESCRIPTION INPUT****/
+#category-description {
+  background-color: transparent;
+  color: #7f7f7f;
+  width: 90%;
+  height: 100px;
+  font-size: 20px;
+  font-family: Rockwell, sans-serif;
+  border: none;
+  border-left: 3px solid #75c9c8;
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-top: 20px;
+  outline: none;
+  resize: none;
+}
+
+.create-menu-buttons {
+  width: 100%;
+  height: 60px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#cancel-button {
+  background-color: transparent;
+  color: #ff3a5d;
+  font-family: Rockwell, sans-serif;
+  font-size: 13px;
+  padding-top: 6px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#create-button {
+  width: 110px;
+  height: 30px;
+  background-color: #101e34;
+  color: #fff;
+  font-family: Rockwell, sans-serif;
+  font-size: 20px;
+  margin-left: 20px;
+  padding-top: 6px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/*
+========================
+POPUP DELETE MENU
+========================
+*/
+
+.delete-popup {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  visibility: hidden;
+}
+.delete-popup.active {
+  visibility: visible;
+}
+
+.delete-menu {
+  background-color: #0b0e12;
+  color: #fff;
+  width: 450px;
+  height: 150px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.5s;
+}
+.delete-menu.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.delete-menu p {
+  margin-top: 35px;
+}
+
+.delete-menu button {
+  border: none;
+  outline: none;
+  color: #fff;
+  width: 40%;
+  height: 35px;
+  font-size: 18px;
+  font-family: Rockwell, sans-serif;
+  border-radius: 6px;
+  margin-top: 20px;
+  padding-top: 4px;
+  cursor: pointer;
+}
+#cancel-delete {
+  background-color: #ff3a5d;
+}
+#confirm-delete {
+  background-color: #101e34;
+}
+
+/*
+========================
+Media Queries 
+========================
+*/
+
+@media screen and (max-width: 550px) {
+  .create-menu {
+    width: 350px;
+    height: 500px;
+  }
+}

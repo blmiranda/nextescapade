@@ -1,16 +1,18 @@
 // INITIALIZING FIREBASE
 const firebaseConfig = {
-  apiKey: "AIzaSyD61MQ18ibGkA_wsxB_KG2Lc5Jpp0qZY3Q",
-  authDomain: "wishingto.firebaseapp.com",
-  projectId: "wishingto",
-  storageBucket: "wishingto.appspot.com",
-  messagingSenderId: "994257848607",
-  appId: "1:994257848607:web:52501d863d9c934465c82a",
-  measurementId: "G-K8KJ559BXZ",
+  apiKey: "AIzaSyC66WdaLKnrp5dZmKEaLZoAAkpW4SaVFxM",
+  authDomain: "nextescapade-ab9d4.firebaseapp.com",
+  projectId: "nextescapade-ab9d4",
+  storageBucket: "nextescapade-ab9d4.appspot.com",
+  messagingSenderId: "95167174641",
+  appId: "1:95167174641:web:9ad6fb0b882772ee115650",
+  measurementId: "G-06P14KEP7M",
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
+const storage = firebase.storage();
+const bucketRef = storage.ref();
 
 /*
 ========================
@@ -22,7 +24,7 @@ AUTHENTIFICATION
 function verifyCurrentUser() {
   auth.onAuthStateChanged(() => {
     if (auth.currentUser != null) {
-      location.replace("../pages/my-wishlist.html");
+      location.replace("../pages/my-destinations.html");
     }
   });
 }
@@ -34,9 +36,11 @@ function signUp(newUserEmail, newUserPassword) {
     .then((createdUser) => {
       db.collection("users")
         .doc(createdUser.user.uid)
+        .collection("wishlists")
+        .doc("ignore")
         .set({})
         .then(() => {
-          location.replace("../pages/my-wishlist.html");
+          location.replace("../pages/my-destinations.html");
         });
     })
     .catch((error) => {
@@ -51,7 +55,7 @@ function signIn(userEmail, userPassword) {
       .signInWithEmailAndPassword(userEmail, userPassword)
       .then((user) => {
         if (user) {
-          location.replace("../pages/my-wishlist.html");
+          location.replace("../pages/my-destinations.html");
         }
       })
       .catch((error) => {
@@ -81,13 +85,87 @@ DATABASE
 // GET USER DATA
 function fetchUserData() {
   auth.onAuthStateChanged((user) => {
-    userAuth = user;
+    let data = {};
+
+    data.userAuth = user;
 
     db.collection("users")
       .doc(user.uid)
-      .get()
-      .then((snapshot) => {
-        userData = snapshot.data();
+      .collection("destinations")
+      .doc("ignore") // useless document to delete
+      .delete()
+      .then(() => {
+        db.collection("users")
+          .doc(user.uid)
+          .collection("destinations")
+          .get()
+          .then((snapshot) => {
+            data.userData = snapshot.docs;
+            integrateData(data);
+          });
       });
   });
 }
+
+//  CREATE NEW CATEGORY
+function newCategory(categoryName, categoryIMG) {
+  bucketRef
+    .child(`/Images/${auth.currentUser.uid}/${categoryName}`)
+    .child(categoryIMG.name)
+    .put(categoryIMG)
+    .then((snapshot) => {
+      bucketRef
+        .child(snapshot.ref.fullPath)
+        .getDownloadURL()
+        .then((URL) => {
+          db.collection("users")
+            .doc(auth.currentUser.uid)
+            .collection("destinations")
+            .doc(categoryName)
+            .set({
+              imgURL: URL,
+            })
+            .then(() => {
+              location.reload();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        });
+    });
+}
+
+//  DELETE CATEGORY
+function deleteExistingCategory(selectedCategory) {
+  db.collection("users")
+    .doc(auth.currentUser.uid)
+    .collection("destinations")
+    .doc(selectedCategory)
+    .delete()
+    .then(() => {
+      bucketRef
+        .child(`/Images/${auth.currentUser.uid}/${selectedCategory}`)
+        .listAll()
+        .then((res) => {
+          res.items.forEach((item) => {
+            bucketRef
+              .child(
+                `/Images/${auth.currentUser.uid}/${selectedCategory}/${item.name}`
+              )
+              .delete()
+              .then(() => {
+                location.reload();
+              });
+          });
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+/*
+========================
+STORAGE
+========================
+*/

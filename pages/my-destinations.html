@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Destinations</title>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="../CSS/my-destinations.css">
+        <script src="https://kit.fontawesome.com/6e389afd81.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>NextEscapade</h1>
+
+            <i class="fa-solid fa-user-astronaut fa-xl" onclick="showMenu()"></i>
+        </header>
+
+        <main>
+            <div class="empty-list">
+                <h2>Add a destination!</h2>
+            </div>
+
+            <div class="items-list"></div>
+        </main>
+
+        <footer onclick="openCreateWindow()">
+            <i class="fa-solid fa-plus fa-lg"></i>
+        </footer>
+
+        <div class="logout-popup">
+            <div class="logout-menu">
+                <i class="fa-solid fa-plus fa-lg" onclick="closeMenu()"></i>
+                <span id="username"></span>
+                <button id="logout-button" onclick="logOut()">Log Out</button>
+            </div>
+        </div>
+
+        <div class="create-popup">
+            <div class="create-menu">
+                <h2>New Destination</h2>
+                <hr>
+
+                <div class="upload-photo">
+                    <i class="fa-solid fa-image fa-3x"></i>
+                    <input type="file" id="image-input">
+                </div>
+
+                <input type="text" id="category-name" placeholder="Destination Name">
+
+                <div class="create-menu-buttons">
+                    <button id="cancel-button" onclick="closeCreateWindow()">Cancel</button>
+                    <button id="create-button" onclick="createCategory()">Create</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="delete-popup">
+            <div class="delete-menu">
+                <p>This action cannot be undone!</p>
+
+                <button id="cancel-delete" onclick="closeDeleteConfirmation()">cancel</button>
+                <button id="confirm-delete" onclick="deleteCategory()">delete</button>
+            </div>
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+        <script src="../scripts/app.js"></script>
+        <script src="../scripts/my-destinations.js"></script>
+    </body>
+</html>

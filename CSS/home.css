@@ -4,17 +4,41 @@
 }
 
 body {
-  background-color: #202020;
+  background-color: #141414;
   font-family: Rockwell, sans-serif;
 }
 
 /*
 ============
-MAIN CONTAINER
+VIDEO BACKGROUND
 ============
 */
 
-main {
+#videoBG {
+  position: fixed;
+  filter: brightness(60%);
+  z-index: -1;
+}
+@media (min-aspect-ratio: 16/9) {
+  #videoBG {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  #videoBG {
+    width: auto;
+    height: 100%;
+  }
+}
+
+/*
+============
+CONTENT
+============
+*/
+
+.content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -29,38 +53,33 @@ TITLE
 */
 
 h1 {
-  color: #75c9c8;
-  font-size: 120px;
+  color: #fff;
+  font-size: 90px;
   margin-bottom: 50px;
-  text-shadow: 1px 1px 0px #589796, 2px 2px 0px #589796, 3px 3px 0px #589796,
-    4px 4px 0px #589796, 5px 5px 0px #589796, 6px 6px 0px #589796,
-    7px 7px 0px #589796, 20px 20px 10px rgba(0, 0, 0, 0.7);
+  position: relative;
   cursor: default;
 }
-h1 span {
-  color: #ff3a5d;
-  text-shadow: 1px 1px 0px #b62943, 2px 2px 0px #b62943, 3px 3px 0px #b62943,
-    4px 4px 0px #b62943, 5px 5px 0px #b62943, 6px 6px 0px #b62943,
-    7px 7px 0px #b62943, 20px 20px 10px rgba(0, 0, 0, 0.7);
+h1::before {
+  content: "";
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: -13%;
+  transform: translateY(-50%);
 }
-
-/*
-============
-DESCRIPTION
-============
-*/
-
-.description {
-  color: #7f7f7f;
-  margin-bottom: 70px;
-}
-h2 {
-  font-weight: normal;
-  font-size: 60px;
-}
-p {
-  color: #7f7f7f;
-  font-size: 30px;
+h1::after {
+  content: "";
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  right: -13%;
+  transform: translateY(-50%);
 }
 
 /*
@@ -72,23 +91,57 @@ BUTTONS
 a {
   display: inline-block;
   text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #fff;
   width: 147.3px;
   height: 43px;
   font-size: 23px;
   line-height: 43px;
   border-radius: 5px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
 }
 #sign-in-button {
-  background-color: #ff3a5d;
   margin-right: 20px;
-  box-shadow: 1px 1px 0px #b62943, 2px 2px 0px #b62943, 3px 3px 0px #b62943,
-    4px 4px 0px #b62943, 15px 15px 10px rgba(0, 0, 0, 0.7);
+  transition: 0.3s;
 }
+#sign-in-button:hover {
+  transform: scale(1.15);
+}
+
 #sign-up-button {
-  background-color: #75c9c8;
   margin-left: 20px;
-  box-shadow: 1px 1px 0px #589796, 2px 2px 0px #589796, 3px 3px 0px #589796,
-    4px 4px 0px #589796, 15px 15px 10px rgba(0, 0, 0, 0.7);
+  transition: 0.3s;
+}
+#sign-up-button:hover {
+  transform: scale(1.15);
+}
+
+/*
+===============
+MEDIA QUERIES
+===============
+*/
+
+@media only screen and (max-width: 900px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  a {
+    display: block;
+  }
+  #sign-in-button {
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  #sign-up-button {
+    margin: auto;
+  }
 }
